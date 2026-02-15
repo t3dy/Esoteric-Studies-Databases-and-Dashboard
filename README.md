@@ -1,5 +1,6 @@
 # 🚀 Research Cognition Engine: V3 Release
 **Status:** Live (GitHub Pages) | **Version:** 3.0.0
+<!-- Force Rebuild -->
 
 ## 🔗 Quick Access (NEW: Zero-Config)
 These links work immediately in your browser. No installation required.
