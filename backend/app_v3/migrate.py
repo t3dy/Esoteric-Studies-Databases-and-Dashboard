@@ -2,9 +2,10 @@ import sqlite3
 import os
 import glob
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# .../backend/app_v3/migrate.py -> Go up 3 levels to root
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DB_PATH = os.path.join(BASE_DIR, "library_v3.db")
-MIGRATIONS_DIR = os.path.join(BASE_DIR, "migrations")
+MIGRATIONS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "migrations")
 
 def run_migrations():
     print(f"Migrating V3 Database: {DB_PATH}")
