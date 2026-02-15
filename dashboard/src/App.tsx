@@ -136,87 +136,63 @@ function App() {
     }
   }, [selectedCategory, searchQuery, showView, selectedScholar, selectedMove, selectedAlchemyCat]);
 
+  /*
   const fetchAlchemyStats = async () => {
     try {
       const res = await axios.get(`${API_BASE}/alchemy/stats`);
       setAlchemyStats(res.data);
     } catch (e) { console.error(e); }
   };
+  */
 
   const fetchAlchemyEntities = async (cat: string) => {
-    setLoading(true);
-    try {
-      const res = await axios.get(`${API_BASE}/alchemy/entities`, { params: { category: cat } });
-      setAlchemyEntities(res.data);
-    } catch (e) { console.error(e); } finally { setLoading(false); }
+    // ... logic
   };
 
   const fetchAlchemyEntityDetail = async (id: string) => {
-    try {
-      const res = await axios.get(`${API_BASE}/alchemy/entity/${id}`);
-      setSelectedAlchemyEntity(res.data);
-      setAlchemyMentions(res.data.mentions || []);
-    } catch (e) { console.error(e); }
+    // ... logic
   };
 
   const triggerMining = async () => {
-    try {
-      setMiningStatus('Mining triggered...');
-      await axios.post(`${API_BASE}/alchemy/mine`);
-      setTimeout(() => setMiningStatus(''), 5000);
-    } catch (e) { alert("Mining failed"); }
+    // ... logic
   };
 
+  /*
   const fetchStats = async () => {
     try {
       const res = await axios.get(`${API_BASE}/stats`);
       setStats(res.data);
     } catch (e) { console.error(e); }
   };
+  */
 
   // ... (rest of fetchers)
 
+  /*
   const fetchCategories = async () => {
     try {
       const res = await axios.get(`${API_BASE}/categories`);
       setCategories(res.data);
     } catch (err) { console.error(err); }
   };
+  */
 
   const fetchTitles = async (esotericOnly?: number) => {
-    setLoading(true);
-    try {
-      const res = await axios.get(`${API_BASE}/titles`, {
-        params: {
-          category_id: selectedCategory,
-          search: searchQuery,
-          esoteric_only: esotericOnly
-        }
-      });
-      setTitles(res.data);
-    } catch (e) { console.error(e); } finally { setLoading(false); }
+    // ... logic
   };
 
   const fetchTitleDetail = async (id: number) => {
-    try {
-      const res = await axios.get(`${API_BASE}/title/${id}`);
-      setTitleDetail(res.data);
-    } catch (err) { console.error(err); }
+    // ... logic
   };
 
-  // const fetchKnowledgeStats = async () => { // Removed as knowledgeStats is unused
-  //   try {
-  //     const res = await axios.get(`${API_BASE}/knowledge/stats`);
-  //     setKnowledgeStats(res.data);
-  //   } catch (err) { console.error(err); }
-  // };
-
+  /* 
   const fetchScholars = async () => {
     try {
       const res = await axios.get(`${API_BASE}/knowledge/scholars`);
       setScholars(res.data);
     } catch (err) { console.error(err); }
   };
+  */
 
   const fetchChats = async () => {
     try {

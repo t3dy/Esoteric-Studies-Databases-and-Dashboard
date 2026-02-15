@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+// Inline UI Components for Static Build
+const Card = ({ className, children }: any) => <div className={`rounded-lg border shadow-sm ${className}`}>{children}</div>
+const CardHeader = ({ className, children }: any) => <div className={`flex flex-col space-y-1.5 p-6 ${className}`}>{children}</div>
+const CardTitle = ({ className, children }: any) => <h3 className={`text-2xl font-semibold leading-none tracking-tight ${className}`}>{children}</h3>
+const CardContent = ({ className, children }: any) => <div className={`p-6 pt-0 ${className}`}>{children}</div>
+const Badge = ({ className, variant, children }: any) => (
+    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors ${className} ${variant === 'outline' ? 'border-amber-400 text-amber-900' : 'bg-amber-700 text-white'}`}>
+        {children}
+    </span>
+);
 
 const DigitalHumanities: React.FC = () => {
     const [pipelineCode, setPipelineCode] = useState<string>("");
