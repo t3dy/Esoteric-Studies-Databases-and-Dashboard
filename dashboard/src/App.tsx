@@ -90,10 +90,28 @@ function App() {
       setShowView(view as any);
     }
 
-    fetchStats();
-    fetchCategories();
-    fetchScholars();
-    fetchAlchemyStats();
+    // STATIC MODE: Fetch from JSON snapshots
+    // In production (GitHub Pages), we read from relative path
+    const STATIC_BASE = import.meta.env.BASE_URL + 'data/latest/';
+
+    const loadStaticData = async () => {
+      try {
+        console.log("Loading Static Data from:", STATIC_BASE);
+        const s = await axios.get(STATIC_BASE + 'stats.json');
+        setStats(s.data);
+
+        // For now, minimal load
+      } catch (e) {
+        console.error("Failed to load static snapshots. Are they exported?", e);
+      }
+    };
+
+    loadStaticData();
+
+    // fetchStats(); // Disable Live API
+    // fetchCategories();
+    // fetchScholars();
+    // fetchAlchemyStats();
   }, []);
 
   useEffect(() => {
