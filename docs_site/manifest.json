@@ -1,0 +1,44 @@
+[
+    {
+        "id": "architecture_strategy",
+        "title": "Architecture & Strategy Report",
+        "path": "../architecture_strategy_report.md",
+        "intro": "A high-level overview of how the V3 'Retractable Branch' architecture enables automated storytelling and safety in experimentation.",
+        "icon": "🏛️"
+    },
+    {
+        "id": "analysis_report",
+        "title": "V3 System Audit & Analysis",
+        "path": "../analysis_report.md",
+        "intro": "A comprehensive audit of the V3 'Hermetic Convergence' release, detailing the status of the Image Vault, Historiography Ingestion, and Digital Humanities integration.",
+        "icon": "📊"
+    },
+    {
+        "id": "design_proposals",
+        "title": "V3 Design Proposals",
+        "path": "../v3_design_proposals.md",
+        "intro": "The visionary document outlining the 'Tentacles' expansion: Hermetic Historiography, Image Mining, and the Digital Humanities Pedagogy.",
+        "icon": "🎨"
+    },
+    {
+        "id": "deployment_plan",
+        "title": "V3 Deployment Plan",
+        "path": "../deployment_plan.md",
+        "intro": "The step-by-step guide for rolling out the V3 release to production, including safe migration practices and rollback procedures.",
+        "icon": "🚀"
+    },
+    {
+        "id": "auto_docs",
+        "title": "Auto-Documentation Report",
+        "path": "../auto_documentation_report.md",
+        "intro": "An automatically generated report detailing the codebase structure, function signatures, and system health.",
+        "icon": "🤖"
+    },
+    {
+        "id": "cs_lessons",
+        "title": "CS Lessons in Architecture",
+        "path": "../cs_lessons_architecture.md",
+        "intro": "A pedagogical reflection on the Computer Science principles applied in this project, from dependency injection to event sourcing.",
+        "icon": "🎓"
+    }
+]

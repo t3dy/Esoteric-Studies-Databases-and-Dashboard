@@ -1,0 +1,81 @@
+{
+    "LATE_ANTIQUE": [
+        "Hermes Trismegistus",
+        "Asclepius",
+        "Poimandres",
+        "Corpus Hermeticum",
+        "Zosimos of Panopolis",
+        "Papyri Graecae Magicae",
+        "PGM",
+        "Gnosticism",
+        "Valentinus",
+        "Basilides",
+        "Nag Hammadi",
+        "Demiurge",
+        "Archon"
+    ],
+    "MEDIEVAL": [
+        "Picatrix",
+        "Ghayat al-Hakim",
+        "Ramon Llull",
+        "Albertus Magnus",
+        "Emerald Tablet",
+        "Tabula Smaragdina",
+        "Secretum Secretorum",
+        "Morienus",
+        "Artephius"
+    ],
+    "RENAISSANCE": [
+        "Marsilio Ficino",
+        "Giovanni Pico della Mirandola",
+        "Ludovico Lazzarelli",
+        "Heinrich Cornelius Agrippa",
+        "John Dee",
+        "Giordano Bruno",
+        "Paracelsus",
+        "Rosicrucian",
+        "Fama Fraternitatis",
+        "Confessio Fraternitatis",
+        "Christian Rosenkreutz",
+        "Robert Fludd",
+        "Michael Maier"
+    ],
+    "ENLIGHTENMENT": [
+        "Freemasonry",
+        "Masonic",
+        "Rose Croix",
+        "Illuminati",
+        "Emanuel Swedenborg",
+        "Saint-Germain",
+        "Cagliostro",
+        "Mesmerism",
+        "Magnetism"
+    ],
+    "CONTEMPORARY": [
+        "Theosophy",
+        "Madame Blavatsky",
+        "Golden Dawn",
+        "Aleister Crowley",
+        "Thelema",
+        "S.L. MacGregor Mathers",
+        "A.E. Waite",
+        "Dion Fortune",
+        "C.G. Jung",
+        "Archetype",
+        "G.R.S. Mead",
+        "Frances Yates"
+    ],
+    "MOTIFS": [
+        "Tree of Life",
+        "Sephiroth",
+        "Sefer Yetzirah",
+        "Seal of Solomon",
+        "Alembic",
+        "Crucible",
+        "Dragon",
+        "Green Lion",
+        "Ouroboros",
+        "Abraxas",
+        "Caduceus"
+    ]
+}

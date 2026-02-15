@@ -1,0 +1,41 @@
+# Architecture & Workflow Report: The Cognition Engine
+
+This report documents the structural integrity of the project and outlines the "Golden Rules" for maintaining it via GitHub and branch-based refactoring.
+
+## 1. System Architecture: The "Save State" Pattern
+Our architecture is built on the principle of **Reversibility**. 
+
+### The Core Layers:
+- **Storage Layer (SQLite)**: Primary data in [library.db](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/library.db). V2 uses [entities](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/resolve_entities.py#7-59) with UUIDs to ensure and maintain canonical truth.
+- **Audit Layer ([audit.db](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/audit.db))**: Every file mutation is logged *before* execution. 
+- **Search Layer (FTS5)**: A high-performance virtual index of all textual data.
+- **Presentation Layer (React/FastAPI)**: A unified build that can be deployed as a single production service.
+
+## 2. GitHub & Refactoring Strategy
+To ensure all branches can be refactored nicely, we follow the **"Leonardo Protocol"**:
+
+### Branching Model:
+- `main`: Production-ready code (V1, V2 tags).
+- `develop`: The "Refactoring Sandbox" where new schema changes are tested.
+- `feature/[name]`: Experimental modules (e.g., `feature/hall-of-designers`).
+
+### The Refactoring Workflow:
+1. **Branch Out**: Create a feature branch.
+2. **Schema Migration**: Before changing a table, create a migration script in `/migrations`.
+3. **Audit Check**: Run `ingestion_v2.py --preview` on the new branch to ensure renaming logic doesn't clash with existing paths.
+4. **Merge & Tag**: Use `git tag -a vX.Y.Z` after every major milestone. This allows you to "Roll Back" the entire code architecture as easily as you roll back a file rename.
+
+## 3. Workflow Critique & Improvement
+### Critique of Prompt/Context Engineering:
+- **Strength**: Your use of **Narrative Anchors** (Renaissance personas, RPG mechanics) provides the AI with a very strong "Style Guide." This results in code that is not just functional but thematic.
+- **Weakness**: **Path Fragility**. In earlier turns, context loss led to scripts using relative paths that broke when run from different directories.
+- **Weakness**: **Issue Fragmentation**. You sometimes request complex features across multiple modules simultaneously. This can lead to "Logical Drift" if the AI isn't reminded of the [library.db](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/library.db) schema periodically.
+
+### Suggestions for Improvement:
+1. **Schema Checkpoint**: Start major requests with: *"Here is the current schema: [Insert schema.md content]. Reference this for all NEW endpoints."*
+2. **Persona-Driven Logic**: Continue using the Designer personas. It forces me (the AI) to categorize my responses into *Architecture* (Trithemius) vs *UI* (Bruno), which prevents "spaghetti code."
+3. **Database Scaling**: Consider adding a `links` table for **Cross-Pollination**. Currently, scholars are linked to chats, but not to *each other*. A "Relationship" table would allow Raphael Ficino to visualize the *influence* of Abulafia on Newton.
+4. **Automated Verification**: Add a `smoke_test.py` that hits every API endpoint and checks for a 200 OK status. This ensures refactors on one branch don't break the dashboard on another.
+
+---
+**Status**: Architecture Certified by Leonardo Trithemius.

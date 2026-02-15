@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2 Manual | The Graph</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        code {
+            background: #e8f4f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #2980b9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-link">← Back to Hub</a>
+
+    <h1>Version 2.0: The Graph</h1>
+    <p><em>Status: Active (Foundational Layer)</em></p>
+
+    <h2>Overview</h2>
+    <p>V2 introduced the <strong>Knowledge Graph</strong>, moving beyond file storage to understanding <em>entities</em>
+        (Scholars, Concepts) and their relationships.</p>
+
+    <h2>Key Concepts</h2>
+    <h3>1. Named Entity Recognition (NER)</h3>
+    <p>The system automatically scans PDFs for names like "Isaac Newton" or "Hermes Trismegistus" and links them to a
+        canonical <code>entity_id</code>.</p>
+
+    <h3>2. Inquiry Analysis</h3>
+    <p>The system parses user chat logs to extract <strong>Questions</strong>. It categorizes them into "Moves" such as:
+    </p>
+    <ul>
+        <li><code>Methodology Analysis</code></li>
+        <li><code>Bibliographic Inquiry</code></li>
+        <li><code>Concept Definition</code></li>
+    </ul>
+
+    <h2>Using the V2 Dashboard</h2>
+    <ul>
+        <li><strong>Knowledge Tab</strong>: Browse by Scholar. See which chats discuss "Frances Yates".</li>
+        <li><strong>Popularity Contest</strong>: A visualization showing which topics are most frequently queried.</li>
+        <li><strong>Hall of Designers</strong>: Verify the architectural health of the system.</li>
+    </ul>
+</body>
+
+</html>

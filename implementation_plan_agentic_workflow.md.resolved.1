@@ -1,0 +1,45 @@
+# Implementation Plan: V3 Agentic Designer Workflow
+
+This plan transitions the "Renaissance Designer" team into a modular, agentic processing pipeline governed by a strict **Knowledge Graph Contract**. This ensures that historiographical interpretation is structured, queryable, and analytically sound.
+
+## User Review Required
+> [!IMPORTANT]
+> This upgrade implements **SQLite Triggers** to enforce domain drift constraints. Relationships that violate the ontology will be hard-blocked at the database level.
+
+## Proposed Changes
+
+### 1. V3 Contract Schema Hardening
+#### [NEW] [003_v3_contract_hardening.sql](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/migrations/003_v3_contract_hardening.sql)
+- **ALCH_RUNS**: Update to UUID primary keys; add `run_type`, `status`, `git_commit`, `params_json`.
+- **ALCH_ENTITIES**: Add `normalized_name` and `confidence` fields.
+- **ALCH_ENTITY_ALIASES**: New table for entity convergence and provenance.
+- **RELATIONSHIPS**: Add `source_chunk_id` and `evidence_snippet`.
+- **PREDICATE_VOCAB**: Extend with `is_symmetric`, `requires_evidence`, `allowed_subject_domains`, `allowed_object_domains`.
+- **TRIGGERS**:
+    - `validate_relationship_domains`: Aborts insertion if subject/object domains are incompatible.
+    - `validate_evidence_requirement`: Ensures evidence snippet is present for high-confidence analytical edges.
+
+### 2. Designer Node Workflow
+#### [MODIFY] [agentic_pipeline.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/agentic_pipeline.py)
+- **State Machine**: Implement a DAG where each node accepts a [WorkflowState](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/agentic_pipeline.py#32-39) and returns Pydantic-validated JSON.
+- **Lawrence Node**: Logic for Allegory-to-Analog mapping with material phase detection.
+- **Pamela Node**: Logic for Artisanal Context extraction (Labor verbs + Tool synergies).
+- **Historiography Scorer**: Rule-based scoring for `principe_empirical`, `smith_artisanal`, and `traditional_hermetic`.
+
+### 3. Pipeline Orchestration & Performance
+#### [NEW] [run_v3_pipeline.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/run_v3_pipeline.py)
+- **Relationship Buffer**: Accumulate extraction results in-memory, de-duplicate, and batch insert using single transactions for performance.
+- **Rollback System**: Ensure every run can be perfectly reverted by `run_id` (UUID).
+
+## Verification Plan
+
+### Automated Tests
+- `test_contract_enforcement.py`: 
+    - Attempt to link a "Comic" entity to an "Alchemy" process (Should fail trigger).
+    - Insert relationship with `requires_evidence=True` but no snippet (Should fail trigger).
+    - Verify UUID collision resilience.
+
+### Manual Verification
+- Execute `run_v3_pipeline.py` on the Schuler poetry corpus.
+- Use `sqlite3` to verify `ALCH_ENTITY_ALIASES` correctly links "Green Lion" variations to the canonical node.
+- Inspect the Dashboard Graph view (Neighborhood) to see grounded evidence links.

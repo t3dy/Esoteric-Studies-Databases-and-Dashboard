@@ -1,4 +1,24 @@
-# Task: PDF Library Database and Dashboard
+- [x] Phase 11: Engine Hardening & V3 Stabilization
+    - [x] Implement `schema_version` and `migrate.py`
+    - [x] Add Relationships & Predicate Ontology tables
+    - [x] Transition Backend to WebSocket Event Bus
+    - [x] Set up CI Smoke Tests & Benchmarking
+    - [x] Deploy Portfolio-themed README & Website Links
+    - [x] Generate Automated Documentation Report
+
+- [/] Phase 13: Hermetic Historiography & Image Vault
+    - [x] Harden V3 Analytical Schema (Idempotent Migration)
+    - [x] Expand Lexicon for Hermetic Temporal Layers
+    - [ ] Ingest & Map Hermetic, Gnostic, Rosicrucian, and Crowley corpuses
+    - [ ] Implement `mine_images.py` for automated PDF image extraction
+    - [ ] Design Advanced Search & Viewer for the 'Esoteric Image Vault'
+    - [ ] Implement Web Scraper for public domain alchemical archives
+
+- [/] Phase 14: V3 'Hermetic Convergence' Interface
+    - [x] Build "Gallery of Mutus Liber" (React Image Grid)
+    - [x] Implement "Lumina" Theme Switcher (Academic/Grimoire)
+    - [ ] specific "Golden Chain" Graph View (D3/Mermaid)
+    - [x] Create "Code is Text" DH Pedagogy Page
 
 - [x] Rename PDF Files
 - [x] Design Database and Dashboard Architecture
@@ -15,10 +35,43 @@
 - [x] Create 'Other Topics' Navigation & Organization
 - [x] Final Verification and Handover
 - [x] Deploy Application (Unified Production Build)
-- [/] Initialize Version 1 & Project Versioning (GitHub)
-- [ ] Create Educational Document: CS Lessons in Architecture
-- [ ] Create Appendix: Research Cognition vs. RPG Design
-- [ ] Formalize V2 Schema & Engineering Plan
-- [ ] Implement Reversible Ingestion Pipeline (V2)
-- [ ] Implement Entity Resolution & Scholar Normalization (V2)
- [ ]
+- [x] Initialize Version 1 & Project Versioning (GitHub)
+- [x] Create Educational Document: CS Lessons in Architecture
+- [x] Create Appendix: Research Cognition vs. RPG Design
+- [x] Formalize V2 Schema & Engineering Plan
+- [x] Implement Reversible Ingestion Pipeline (V2)
+- [x] Implement Entity Resolution & Scholar Normalization (V2)
+- [x] Implement Full-Text Analysis & FTS5 Search (V2)
+- [x] Phase 5: Testing & Reliability (V2)
+- [x] Implement Migration Management (V2) - *Static SQL scripts established*
+- [x] Final Handover & Document Release (V2)
+- [x] Deploy with V1/V2 links & Version History
+- [x] Create Renaissance Design Team Report
+- [x] Implement 'Hall of Designers' Dashboard Page
+    - [x] Add Designer API data
+    - [x] Create UI view with designer buttons
+    - [x] Integrate role-specific visualizations (Mermaid/Charts)
+- [x] Create Architecture & Workflow Critique Report
+- [x] Final V2.0.0 Build, Tag & Production Deployment
+- [x] Create V3 Design Vision & Architectural Audit Report
+- [/] Phase 6: Alchemy Datamine (Feature Branch)
+    - [/] Initialize `feature/alchemy-datamine` branch
+    - [/] Implement database schema & migrations
+    - [x] Create `ingest_alchemy_pdfs.py`
+    - [x] Ingest Alchemy corpus (241 files)
+    - [/] Create `mine_alchemy.py` (NER + Classification)
+    - [/] Create `extract_experiments.py` & `extract_reconstructions.py`
+    - [x] Update Backend API (`/api/alchemy`)
+    - [x] Build Dashboard 'Alchemy Portal'
+- [ ] Phase 7: Integrated V3 Upgrades (Roadmap)
+    - [ ] Implement Leonardo's 'Schema Sentinel'
+    - [ ] Implement Raphael's 'Relationship Weaver'
+    - [ ] Implement Donatello's 'Theme Switcher'
+    - [ ] Implement Michelangelo's 'Questlog'
+- [x] Phase 10: Historiographical Alignment & Advanced Analytics
+    - [x] Update Alchemy Schema for Allegories and Material Culture
+    - [x] Integrate 'Historiographical Concern Trackers' into Design Team
+    - [x] Create 'Historiography & Material Culture' Critique Report
+    - [x] Create 'Workflow & Methodology' Critique & Tools Report
+    - [x] Expand Alchemy Lexicon for Allegories and Imaging
+    - [x] Update Dashboard with new High-Fidelity Categories

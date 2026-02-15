@@ -1,0 +1,27 @@
+# Implementation Plan: Hall of Designers
+
+This feature adds a specialized monitoring and visionary layer to the dashboard, personified by the Renaissance Design Team.
+
+## Proposed Changes
+
+### Backend ([backend.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/backend.py))
+- **[MODIFY]**: Add `/api/designers` endpoint providing role descriptions, current focus, and "issues" (metrics indicating where the database/dashboard needs work).
+- **[MODIFY]**: Add role-specific data payloads (e.g., Trithemius gets branch/db stats, Ficino gets narrative coverage).
+
+### Frontend ([dashboard/src/App.tsx](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/dashboard/src/App.tsx))
+- **[NEW]**: `HallOfDesigners` view.
+- **[NEW]**: `DesignerDetail` sub-view with role-specific visualizations.
+- **[MODIFY]**: Sidebar navigation to include "Hall of Designers."
+
+## Visualizations
+- **Trithemius**: Database schema diagram (Mermaid) + Ingestion health.
+- **Ficino**: Narrative density heat map (Scholar mentions vs chat frequency).
+- **Pico**: "Investigative Move" progression (Gamification stats).
+- **Bruno**: UI Aesthetic status (Tooltip coverage, theme consistency).
+
+## Verification Plan
+### Automated Tests
+- Verify `/api/designers` returns correct JSON structure.
+### Manual Verification
+- Click each designer button to ensure transition to their specific dashboard.
+- Verify Mermaid diagrams render correctly for the Architect.

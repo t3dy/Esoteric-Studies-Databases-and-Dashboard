@@ -11,6 +11,19 @@
   --font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
+[data-theme="grimoire"] {
+  --bg-color: #f4e4bc;
+  --sidebar-bg: #e6d2a0;
+  --card-bg: #fdf5e6;
+  --text-primary: #2c1e0f;
+  --text-secondary: #5d4037;
+  --accent-color: #8b0000;
+  /* Alchemical Red */
+  --accent-hover: #a52a2a;
+  --border-color: #d2b48c;
+  --font-family: 'Crimson Text', 'Garamond', serif;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -393,4 +406,325 @@ body {
 
 .btn-primary:hover {
   background-color: var(--accent-hover);
+}
+
+/* Hall of Designers */
+.designers-page {
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.designer-selector {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.designer-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  min-width: 250px;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.designer-btn:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.designer-btn.active {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.designer-avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.designer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.d-role {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.designer-details {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.designer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.designer-issues h3,
+.architectural-flow h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.issue-list {
+  list-style: none;
+}
+
+.issue-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 2px solid var(--accent-color);
+}
+
+.issue-item span {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.blueprint-box {
+  background: #1a2b3c;
+  /* Blueprint Blue */
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #2a3b4c;
+  min-height: 400px;
+  overflow: auto;
+  position: relative;
+}
+
+.blueprint-box::before {
+  content: "BLUEPRINT / ARCHITECTURE FLOW";
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 800;
+}
+
+.mermaid {
+  background: transparent !important;
+}
+
+/* Mermaid Customization for Blueprint look */
+.mermaid svg {
+  max-width: 100%;
+}
+
+.animate-in {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .designer-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Alchemy Portal Styles */
+.alchemy-portal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+.portal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.category-tab {
+  padding: 0.6rem 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.category-tab:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+}
+
+.category-tab.active {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border-color: var(--accent-color);
+  font-weight: 600;
+}
+
+.alchemy-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  overflow: hidden;
+  height: calc(100vh - 250px);
+}
+
+.entity-pane,
+.evidence-pane {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: rgba(16, 20, 24, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.entity-list-item {
+  padding: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.entity-list-item:hover,
+.entity-list-item.active {
+  border-color: var(--accent-color);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.entity-title {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.entity-meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.evidence-pane h3 {
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.mention-card {
+  background: #fdf5e6;
+  /* Parchment Light */
+  color: #2c1e0f;
+  padding: 1.2rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--accent-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.mention-card::after {
+  content: "PROVENANCE: VERIFIED";
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  opacity: 0.3;
+}
+
+.mention-context {
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+
+.mention-source {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #5d4037;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mine-btn {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mine-btn:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
 }

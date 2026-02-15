@@ -1,0 +1,32 @@
+# Collaborative Workflow: Methodology & Meta-Critique
+
+An audit of the current research workflow and technical collaboration patterns.
+
+## 📉 Workflow Critique
+
+### 1. The "Inbox" Bottleneck
+We are relying on a periodic manual "databaseINBOX" clear. While the `route_inbox.py` script helps, it is still a batch process. This creates "bursts" of metadata that can overwhelm the entity resolution system.
+
+### 2. Context Flattening
+Currently, the system treats a 1000-token chunk from a 17th-century manuscript the same as a 1000-token chunk from a modern Palgrave monograph. We are missing a **Temporal Anchor** in the UI that differentiates primary sources from secondary critique.
+
+### 3. The "Silent Extraction" Problem
+Mining happens in the background. You see the results, but not the **Logic of Discovery**. You don't know *why* the green dragon was categorized as an allegory rather than a process without digging into logs.
+
+---
+
+## 🛠️ Suggested Tools & Methods
+
+### Method: "Active Pedigree Tracking"
+Instead of just linking a mention to a PDF, we should implement a **Textual Pedigree** feature. 
+- **Tool Suggestion**: Integrate **Git-style Diffs** for alchemical recipes across different editions (e.g., comparing the 1644 Backhouse translation to the original French).
+
+### Tool: "Live Discovery Feed"
+A "Ticker" or "Recent Extractions" pane in the dashboard that shows the "Thought Process" of the mining engine in real-time.
+- **Implementation**: A WebSocket-driven `MiningLog` component that streams: *"Detected 'Vitriol' on Page 45 of Schuler; High correlation with 'Green Lion' allegory."*
+
+### Tool: "Zotero / BibLaTeX Integration"
+If we are scaling to hundreds of secondary sources, we should allow the dashboard to import/export `.bib` files. This bridges the gap between our "Data Lake" and your formal writing/research tools.
+
+### Method: "Visual Genealogy" (Michelangelo's Dream)
+Use Mermaid or D3.js to visualize the **Genealogy of Images**. Show how a specific woodcut in the *Rosarium Philosophorum* migrates and changes in later 17th-century editions.

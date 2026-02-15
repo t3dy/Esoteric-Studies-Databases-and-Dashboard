@@ -1,0 +1,117 @@
+{
+    "THEORIES": [
+        "sulfur-mercury theory",
+        "corpuscular theory",
+        "chymical philosophy",
+        "vitalism",
+        "hylomorphism",
+        "palingenesis",
+        "tria prima",
+        "macrocosm",
+        "microcosm"
+    ],
+    "ALCHEMISTS": [
+        "Paracelsus",
+        "Isaac Newton",
+        "Robert Boyle",
+        "George Starkey",
+        "Michael Sendivogius",
+        "Basil Valentine",
+        "Jabir ibn Hayyan",
+        "Zosimos of Panopolis",
+        "Lawrence Principe"
+    ],
+    "EQUIPMENT": [
+        "alembic",
+        "retort",
+        "cucurbit",
+        "athanor",
+        "pelican",
+        "crucible",
+        "mortar",
+        "pestle",
+        "bellows"
+    ],
+    "MATERIALS": [
+        "mercury",
+        "sulfur",
+        "antimony",
+        "vitriol",
+        "sal ammoniac",
+        "cinnabar",
+        "aqua regia",
+        "aqua fortis",
+        "philosopher's stone",
+        "saltpeter"
+    ],
+    "PROCESSES": [
+        "calcination",
+        "distillation",
+        "sublimation",
+        "fixation",
+        "cohobation",
+        "solution",
+        "putrefaction",
+        "fermentation",
+        "multiplication",
+        "projection"
+    ],
+    "MOVEMENTS": [
+        "new historiography",
+        "externalism",
+        "internalism",
+        "Yates thesis",
+        "Scientific Revolution"
+    ],
+    "PERIODS": [
+        "Late Antiquity",
+        "Medieval",
+        "Early Modern",
+        "Enlightenment",
+        "19th century occult revival"
+    ],
+    "ALLEGORIES": [
+        "green lion",
+        "red king",
+        "white queen",
+        "ouroboros",
+        "toad",
+        "dragon",
+        "caduceus",
+        "eagle",
+        "phoenix",
+        "hermaphrodite",
+        "rebis"
+    ],
+    "IMAGES": [
+        "woodcut",
+        "engraving",
+        "emblem",
+        "splendor solis",
+        "mutus liber",
+        "atalanta fugiens",
+        "rosarium philosophorum",
+        "crowning of nature"
+    ],
+    "ARTISANAL": [
+        "crucible",
+        "furnace",
+        "bellows",
+        "hand-knowledge",
+        "laboratory",
+        "workshop",
+        "pigment",
+        "glassmaking",
+        "distiller",
+        "apprenticeship"
+    ],
+    "TEXTS": [
+        "manuscript",
+        "incunabula",
+        "treatise",
+        "compendium",
+        "theatrum chemicum",
+        "musaum hermeticum",
+        "turba philosophorum"
+    ]
+}

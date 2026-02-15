@@ -1,0 +1,38 @@
+# Implementation Plan: Agentic Designer Workflow (V3.1)
+
+This plan moves the "Team voiced by Designers" from narrative decoration into a structured, agentic processing pipeline. Each designer becomes a typed node in a graph-based workflow.
+
+## Proposed Changes
+
+### 1. Database & Schema Updates
+#### [MODIFY] [002_agentic_workflow.sql](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/migrations/002_agentic_workflow.sql) [NEW]
+- Extend [alchemy_entities](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/backend.py#381-395) with `historiography_tags` (JSON) and `confidence` (REAL).
+- Populate `predicate_vocab` with new predicates: `analog_of`, `phase_of`, `embedded_in`, `performed_with`, `references_craft`, `associated_with_guild`.
+
+### 2. Workflow Orchestration
+#### [NEW] [agentic_pipeline.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/agentic_pipeline.py)
+- **State Management**: Define a `WorkflowState` container for chunk processing.
+- **Designer Nodes**:
+    - `LawrenceNode`: LLM-assisted extraction of Alchemical Allegories (K) and Chemical Analogs.
+    - `PamelaNode`: LLM-assisted extraction of Artisanal Contexts (M) and Labor Verbs.
+    - `HistoriographyScorerNode`: Rule-based engine assigning scores for `principe_empirical`, `smith_artisanal`, and `traditional_hermetic`.
+- **Validation**: Use Pydantic models for strict output contracts.
+- **Orchestrator**: A DAG runner that passes state through nodes and handles database persistence with `run_id`.
+
+### 3. Integration & Events
+#### [MODIFY] [backend.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/backend.py)
+- Trigger `agentic_pipeline.py` as a background task after ingestion.
+- Emit `agentic_mining_complete` event via WebSocket once the graph finishes.
+
+## Verification Plan
+
+### Automated Tests
+- `test_agentic_workflow.py`: 
+    - Verify that Lawrence doesn't creating an `analog_of` relationship without an evidence snippet.
+    - Verify that Pamela requires at least one labor verb to create an Artisanal Context.
+    - Assert that historiography scores are correctly aggregated based on keywords.
+
+### Manual Verification
+- Trigger the "Run Mine" via the Alchemy Portal.
+- Inspect the "Provenance" pane in the UI to see new `historiography_tags` and Allegory relationships.
+- Verify FTS5 search sensitivity for new artisanal terms.

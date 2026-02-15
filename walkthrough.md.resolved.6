@@ -1,0 +1,20 @@
+---
+
+## Version 2: The Cognition Engine (Released)
+
+I have successfully evolved the project from a visual tool into a production-grade **Research Cognition Engine**. Version 2 introduces industry-standard engineering rigor and data safety.
+
+### Key V2 Improvements:
+- **Reversible Ingestion**: Every file rename is now audit-logged in [audit.db](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/audit.db). If a batch rename goes wrong, you can use [rollback.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/rollback.py) to restore the original state instantly.
+- **Canonical Entity Resolution**: The system now uses **UUID-based IDs** for scholars and entities. This prevents "Isaac Newton" and "Newton" from being counted separately, ensuring your research metrics are statistically sound.
+- **High-Performance Search (FTS5)**: Integrated SQLite's Full-Text Search engine. You can now perform sub-second queries across the entire library and thousands of chat messages with ranking and relevance.
+- **Audit Trail**: A formal `audit_log` tracks every destructive operation, providing 100% accountability for the file system.
+
+### V2 Command Suite:
+- `ingestion_v2.py --preview`: Preview sanitization rules that preserve semantic punctuation (hyphens/underscores).
+- `ingestion_v2.py --apply`: Safe, logged execution of renames.
+- [rollback.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/rollback.py): The "Undo" button for your architecture.
+- [setup_fts.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/setup_fts.py): Re-indexes the entire corpus for search.
+- [resolve_entities.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/resolve_entities.py): Migrates legacy knowledge nodes to the formal canonical model.
+
+---

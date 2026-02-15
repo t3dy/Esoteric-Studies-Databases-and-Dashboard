@@ -1,0 +1,40 @@
+# Implementation Plan: Alchemy Datamine & Knowledge Engine
+
+Building a specialized extraction pipeline for the `/alchemy` corpus following the "Leonardo Protocol" for data integrity and provenance.
+
+## 1. Data Model (SQLite)
+We will expand the schema with dedicated tables for traceable entity extraction.
+
+### Tables
+- `alchemy_runs`: Tracks mining operations for easy rollback.
+- `alchemy_entities`: Canonical storage for Alchemists, Materials, etc.
+- `alchemy_mentions`: Links entities to specific text chunks/pages in PDFs.
+- `alchemy_experiments`: Procedural data extracted from recipes.
+- `alchemy_reconstructions`: Links modern replicate work (Principe) to historical sources.
+
+## 2. Extraction Pipeline
+### A. Ingestion (`ingest_alchemy_pdfs.py`)
+- Scan `/alchemy` recursively.
+- Extract per-page text (using `PyMuPDF`).
+- Chunking (1000 tokens) with overlap and normalization.
+
+### B. Mining (`mine_alchemy.py`)
+- **Layer 1**: Lexicon-based seeding (Seeded lists for Processes/Equipment).
+- **Layer 2**: NER (Names/Places) + Bibliographic heuristics.
+- **Layer 3**: LLM-aided classification (Optional/Filtered) using retrieved context.
+
+## 3. Dashboard Integration
+### Alchemy Datamine View
+- Category tabs (A-J).
+- Evidence panels showing context snippets for every term.
+- "Run History" management for triggers and rollbacks.
+
+## 4. Verification Plan
+### Functional Tests
+- Idempotency check: Rerunning ingestion on same files results in 0 new records.
+- Rollback: Reverting a run_id clears all associated mentions and entities.
+### Data Verification
+- Compare extraction counts against a known "Starter Lexicon."
+
+## 5. Branch Strategy
+- Create `feature/alchemy-datamine` off `main`.

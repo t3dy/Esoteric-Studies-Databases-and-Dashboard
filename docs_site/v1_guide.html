@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V1 Manual | The Archive</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #95a5a6;
+            padding-bottom: 0.5rem;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #95a5a6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-link">← Back to Hub</a>
+
+    <h1>Version 1.0: The Archive</h1>
+    <p><em>Status: Deprecated (Superseded by V2/V3)</em></p>
+
+    <h2>Overview</h2>
+    <p>V1 focused on establishing a clean "Source of Truth" for the file system. It replaced chaotic filenames with
+        standardized, distinct titles.</p>
+
+    <h2>Database Schema (Legacy)</h2>
+    <ul>
+        <li><code>titles</code>: The core table mapping file paths to IDs.</li>
+        <li><code>categories</code>: Basic folder-based categorization (e.g., "Alchemy", "Gnostic").</li>
+    </ul>
+
+    <h2>Workflow</h2>
+    <ol>
+        <li><strong>Renaming</strong>: Run <code>rename_exec.py</code> to normalize PDF filenames (removing underscores,
+            etc.).</li>
+        <li><strong>Scanner</strong>: Run <code>scanner.py</code> to crawl the directory and populate the SQLite
+            database.</li>
+    </ol>
+
+    <h2>Dashboard Features</h2>
+    <p>The V1 Dashboard (Legacy View) provided:</p>
+    <ul>
+        <li><strong>Library Browser</strong>: A simple grid of PDF cards.</li>
+        <li><strong>Search</strong>: Basic SQL <code>LIKE</code> query on titles.</li>
+    </ul>
+</body>
+
+</html>

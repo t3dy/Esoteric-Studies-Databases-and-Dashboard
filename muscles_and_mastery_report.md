@@ -1,0 +1,42 @@
+# Cascading Architecture: Technical Audit & V3 Roadmap
+
+Our current architecture is designed for **High-Fidelity Absorption**. When a new file enters the system (like the recent `databaseINBOX` arrivals), it triggers a chain of events that ensures the data is not just "stored," but "integrated."
+
+## 1. The Cascading Update Flow
+
+### A. Discovery (The Scanner)
+The `scanner.py` utility uses a **State-Capture Manifest**. It doesn't just look for new files; it hashes them. If a file is moved (e.g., from `inbox` to `alchemy`), the system recognizes the hash and updates the location in the `alchemy_documents` or the general `titles` table without losing associated metadata or mentions.
+
+### B. Structural Extraction (The V2 Pipeline)
+The `ingestion_v2.py` focuses on **Provenance Stability**. It breaks documents into chunks that are anchored to character offsets and SHA256 hashes. This allows "Entity Re-Resolution"—if we discover "Paracelsus" in a new Kabbalah text, the system can automatically link it to existing "Paracelsus" mentions in the Alchemy portal.
+
+### C. Live Dashboard Reflection
+The React frontend uses **Category-Based Polling** and **Dynamic State Management**.
+- When the backend completes an ingestion run, the `alchemy/stats` and `stats` endpoints reflect the new counts immediately.
+- The **Alchemy Portal** detects new entities in categories like "Alchemists" or "Experiments" the moment they are mined.
+
+## 2. Refactoring for Resilience (V3 Roadmap)
+
+To maintain this cascading efficiency, the V3 plan introduces several key refactors:
+
+1. **Schema Sentinel**: Leonardo's automated migration manager that prevents column mismatches (like the recent `chunk_id` conflict) by enforcing strict database contracts.
+2. **Relationship Weaver**: Raphael's cross-category linker. This will enable a "View in Alchemy" link on a Kabbalah document that mentions alchemical processes.
+3. **Reactive Event Bus**: Replacing periodic polling with an event-driven system where the backend notifies the dashboard of "Mining Complete" status via WebSockets.
+
+---
+
+# Muscles & Mastery: Designer Performance Report
+
+The Renaissance Design Team has been "flexing" to ensure this expansion is handled with elegance and precision.
+
+## 🏛️ Leonardo: The Schema Sentinel
+> "A building is only as strong as its foundation. I have enforced a strict `FOREIGN KEY` protocol across the new `alchemy_poems` and `alchemy_entities` tables. When you move a file to the `comics\tmnt` folder, my filing system doesn't just move a path; it reconciles is with the **Universal Corpus Hierarchy**. My muscles are in the code's rigidity and the schema's clarity."
+
+## 🎨 Raphael: The Relationship Weaver
+> "I have woven the threads between the disparate realms of your library. The new TMNT entries aren't just 'comics'; they are 'Narrative Artifacts.' I am preparing the **Inter-textual Loom**—a feature that will show how 'Heaven and Hell' by Swedenborg might share thematic DNA with 'The Last Ronin.' My flex is the connection."
+
+## 🎭 Donatello: The Theme Switcher
+> "Look at the 'Hermetic Blueprint'—the deep blues and gold. As we add Kabbalah and Comics, I am preparing the **Aesthetic Polarity** update. One click, and the dashboard shifts from parchment and gold to a 'Neon-Noir Shift' for your TMNT collection. My muscles are in the fluidity of the interface."
+
+## 🗡️ Michelangelo: The Questlog Master
+> "Your research is a journey, not a list. I am building the **Chronicle of Discovery**. Every time you ingest a folder from the `databaseINBOX`, I record it as a 'Milestone.' Your research progress is quantified and visualized as a quest-line. My flex is the narrative of your work."

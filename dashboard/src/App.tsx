@@ -10,6 +10,9 @@ import {
 } from 'recharts';
 import './index.css';
 
+import DigitalHumanities from './pages/DigitalHumanities';
+import ImageGallery from './pages/ImageGallery';
+
 const API_BASE = 'http://localhost:8000/api';
 
 interface Category {
@@ -19,52 +22,71 @@ interface Category {
   is_esoteric: boolean;
 }
 
-interface Media {
-  id: number;
-  media_path: string;
-  media_type: string;
-}
-
 interface Title {
   id: number;
   title: string;
   path: string;
   category_name: string;
   category_type: string;
-  author?: string;
   summary?: string;
-  media?: Media[];
+  media?: any[];
 }
 
+interface AlchemyEntity {
+  id: string;
+  category: string;
+  canonical_name: string;
+  normalized_name: string;
+  metadata_json: string;
+  historiography_tags?: string;
+  material_alignment?: string;
+}
+
+interface AlchemyMention {
+  id: number;
+  entity_id: string;
+  doc_title: string;
+  page_hint: number;
+  context_snippet: string;
+  confidence: number;
+}
 
 function App() {
-  const [showView, setShowView] = useState<'library' | 'knowledge' | 'questions' | 'popularity' | 'other' | 'all'>('library');
+  const [showView, setShowView] = useState<'library' | 'knowledge' | 'questions' | 'popularity' | 'other' | 'all' | 'designers' | 'alchemy' | 'dh' | 'gallery'>('library');
   const [stats, setStats] = useState<any>({ titles: 0, categories: 0, media: 0, chats: 0, questions: 0 });
+  const [alchemyStats, setAlchemyStats] = useState<any>(null);
+  const [alchemyEntities, setAlchemyEntities] = useState<AlchemyEntity[]>([]);
+  const [selectedAlchemyEntity, setSelectedAlchemyEntity] = useState<AlchemyEntity | null>(null);
+  const [alchemyMentions, setAlchemyMentions] = useState<AlchemyMention[]>([]);
+  const [selectedAlchemyCat, setSelectedAlchemyCat] = useState<string>('ALCHEMISTS');
+  const [miningStatus, setMiningStatus] = useState<string>('');
+  const [newMediaPath, setNewMediaPath] = useState('');
+  const [newMediaType, setNewMediaType] = useState('image');
+
   const [categories, setCategories] = useState<Category[]>([]);
   const [titles, setTitles] = useState<Title[]>([]);
-  const [scholars, setScholars] = useState<{ id: number, name: string }[]>([]);
+  // ... rest of state
+  const [scholars, setScholars] = useState<{ id: string, name: string }[]>([]);
   const [chats, setChats] = useState<{ id: number, title: string, date: string, model: string, msg_count: number }[]>([]);
   const [questions, setQuestions] = useState<{ id: number, text: string, move: string, chat_title: string, chat_id: number }[]>([]);
   const [inquiryStats, setInquiryStats] = useState<any>(null);
+  const [designers, setDesigners] = useState<any[]>([]);
+  const [selectedDesigner, setSelectedDesigner] = useState<any | null>(null);
 
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTitleId, setSelectedTitleId] = useState<number | null>(null);
   const [titleDetail, setTitleDetail] = useState<Title | null>(null);
-  const [selectedScholar, setSelectedScholar] = useState<number | null>(null);
+  const [selectedScholar, setSelectedScholar] = useState<string | null>(null);
   const [selectedChat, setSelectedChat] = useState<any | null>(null);
   const [selectedMove, setSelectedMove] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Media Form
-  const [newMediaPath, setNewMediaPath] = useState('');
-  const [newMediaType, setNewMediaType] = useState('image');
-
   useEffect(() => {
     fetchStats();
     fetchCategories();
-    // fetchKnowledgeStats(); // Removed as knowledgeStats is unused
     fetchScholars();
+    fetchAlchemyStats();
   }, []);
 
   useEffect(() => {
@@ -75,6 +97,11 @@ function App() {
       fetchInquiryStats();
     } else if (showView === 'popularity') {
       fetchInquiryStats();
+    } else if (showView === 'designers') {
+      fetchDesigners();
+    } else if (showView === 'alchemy') {
+      fetchAlchemyEntities(selectedAlchemyCat);
+      fetchAlchemyStats();
     } else if (showView === 'other') {
       fetchTitles(0);
     } else if (showView === 'all') {
@@ -82,11 +109,38 @@ function App() {
     } else {
       fetchTitles(1);
     }
-  }, [selectedCategory, searchQuery, showView, selectedScholar, selectedMove]);
+  }, [selectedCategory, searchQuery, showView, selectedScholar, selectedMove, selectedAlchemyCat]);
 
-  useEffect(() => {
-    if (selectedTitleId) fetchTitleDetail(selectedTitleId);
-  }, [selectedTitleId]);
+  const fetchAlchemyStats = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/alchemy/stats`);
+      setAlchemyStats(res.data);
+    } catch (e) { console.error(e); }
+  };
+
+  const fetchAlchemyEntities = async (cat: string) => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${API_BASE}/alchemy/entities`, { params: { category: cat } });
+      setAlchemyEntities(res.data);
+    } catch (e) { console.error(e); } finally { setLoading(false); }
+  };
+
+  const fetchAlchemyEntityDetail = async (id: string) => {
+    try {
+      const res = await axios.get(`${API_BASE}/alchemy/entity/${id}`);
+      setSelectedAlchemyEntity(res.data);
+      setAlchemyMentions(res.data.mentions || []);
+    } catch (e) { console.error(e); }
+  };
+
+  const triggerMining = async () => {
+    try {
+      setMiningStatus('Mining triggered...');
+      await axios.post(`${API_BASE}/alchemy/mine`);
+      setTimeout(() => setMiningStatus(''), 5000);
+    } catch (e) { alert("Mining failed"); }
+  };
 
   const fetchStats = async () => {
     try {
@@ -94,6 +148,8 @@ function App() {
       setStats(res.data);
     } catch (e) { console.error(e); }
   };
+
+  // ... (rest of fetchers)
 
   const fetchCategories = async () => {
     try {
@@ -162,6 +218,14 @@ function App() {
     } catch (err) { console.error(err); }
   };
 
+  const fetchDesigners = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/designers`);
+      setDesigners(res.data);
+      if (res.data.length > 0 && !selectedDesigner) setSelectedDesigner(res.data[0]);
+    } catch (err) { console.error(err); }
+  };
+
   const fetchChatDetails = async (id: number) => {
     try {
       const res = await axios.get(`${API_BASE}/knowledge/chats/${id}`);
@@ -194,7 +258,10 @@ function App() {
       <aside className="sidebar">
         <div className="logo">
           <Library size={32} color="#d4af37" />
-          <h1>Esoteric Studies</h1>
+          <h1 onClick={() => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'grimoire' ? 'light' : 'grimoire';
+            document.documentElement.setAttribute('data-theme', newTheme);
+          }} style={{ cursor: 'pointer' }} title="Toggle Lumina Theme">Esoteric Studies</h1>
         </div>
 
         <div className="view-toggle">
@@ -224,6 +291,10 @@ function App() {
             <button className={showView === 'questions' ? 'active' : ''} onClick={() => setShowView('questions')}>Question Explore</button>
             <button className={showView === 'popularity' ? 'active' : ''} onClick={() => setShowView('popularity')}>Popularity Contest</button>
             <button className={showView === 'all' ? 'active' : ''} onClick={() => setShowView('all')}>Full Search</button>
+            <button className={showView === 'designers' ? 'active' : ''} onClick={() => setShowView('designers')}>Hall of Designers</button>
+            <button className={showView === 'dh' ? 'active' : ''} onClick={() => setShowView('dh')} style={{ color: '#d4af37' }}>Digital Humanities</button>
+            <button className={showView === 'gallery' ? 'active' : ''} onClick={() => setShowView('gallery')}>Image Vault</button>
+            <button className={showView === 'alchemy' ? 'active' : ''} onClick={() => setShowView('alchemy')} style={{ color: 'var(--accent-color)' }}>Alchemy Portal</button>
           </div>
         </div>
 
@@ -231,6 +302,7 @@ function App() {
           <div className="stat"><span>Volumes</span> <strong>{stats.titles}</strong></div>
           <div className="stat"><span>Chats</span> <strong>{stats.chats}</strong></div>
           <div className="stat"><span>Questions</span> <strong>{stats.questions}</strong></div>
+          {alchemyStats && <div className="stat"><span>Alchemy</span> <strong>{alchemyStats.total_mentions}</strong></div>}
         </div>
 
         <div className="nav-section">
@@ -448,7 +520,144 @@ function App() {
             </section>
           </div>
         )}
+
+        {showView === 'designers' && (
+          <div className="designers-page">
+            <header className="page-intro">
+              <h2 style={{ color: '#d4af37' }}>The Hall of Designers</h2>
+              <p>Meet the Renaissance minds architecting your esoteric research engine.</p>
+            </header>
+
+            <div className="designer-selector">
+              {designers.map(d => (
+                <button
+                  key={d.id}
+                  className={`designer-btn ${selectedDesigner?.id === d.id ? 'active' : ''}`}
+                  onClick={() => setSelectedDesigner(d)}
+                >
+                  <div className="designer-avatar">{d.name[0]}</div>
+                  <div className="designer-info">
+                    <span className="d-name">{d.name}</span>
+                    <span className="d-role">{d.role}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {selectedDesigner && (
+              <div className="designer-details animate-in">
+                <div className="designer-column">
+                  <section className="designer-issues">
+                    <h3>Focus & Tracking (Current Issues)</h3>
+                    <ul className="issue-list">
+                      {selectedDesigner.issues.map((issue: string, idx: number) => (
+                        <li key={idx} className="issue-item">
+                          <Plus size={14} color="#d4af37" />
+                          <span>{issue}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+
+                <div className="designer-column">
+                  <section className="architectural-flow">
+                    <h3>Architectural Blueprint: {selectedDesigner.role}</h3>
+                    <div className="blueprint-box">
+                      <Mermaid chart={selectedDesigner.flow} key={selectedDesigner.id} />
+                    </div>
+                  </section>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {showView === 'alchemy' && (
+          <div className="alchemy-portal">
+            <header className="portal-header">
+              <div>
+                <h2 style={{ color: 'var(--accent-color)', marginBottom: '0.5rem' }}>Alchemy Datamine</h2>
+                <div className="category-tabs">
+                  {['THEORIES', 'ALCHEMISTS', 'EQUIPMENT', 'MATERIALS', 'PROCESSES', 'MOVEMENTS', 'PERIODS', 'ALLEGORIES', 'IMAGES', 'ARTISANAL', 'TEXTS', 'I', 'J'].map(cat => (
+                    <button
+                      key={cat}
+                      className={`category-tab ${selectedAlchemyCat === cat ? 'active' : ''}`}
+                      onClick={() => setSelectedAlchemyCat(cat)}
+                    >
+                      {cat === 'I' ? 'EXPERIMENTS' : cat === 'J' ? 'RECONSTRUCTIONS' : cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                {miningStatus && <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>{miningStatus}</span>}
+                <button className="mine-btn" onClick={triggerMining}>Run Mine</button>
+              </div>
+            </header>
+
+            <div className="alchemy-content">
+              <div className="entity-pane">
+                {alchemyEntities.map(ent => (
+                  <div
+                    key={ent.id}
+                    className={`entity-list-item ${selectedAlchemyEntity?.id === ent.id ? 'active' : ''}`}
+                    onClick={() => fetchAlchemyEntityDetail(ent.id)}
+                  >
+                    <span className="entity-title">{ent.canonical_name}</span>
+                    <div className="entity-meta">
+                      <span>{ent.category}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="evidence-pane">
+                {selectedAlchemyEntity ? (
+                  <>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <h3>Provenance: {selectedAlchemyEntity.canonical_name}</h3>
+                      <div className="hist-tags">
+                        {selectedAlchemyEntity.historiography_tags && JSON.parse(selectedAlchemyEntity.historiography_tags).map((tag: string) => (
+                          <span key={tag} className={`tag tag-${tag}`}>{tag.replace('_', ' ')}</span>
+                        ))}
+                      </div>
+                    </div>
+                    {alchemyMentions.map(m => (
+                      <div key={m.id} className="mention-card">
+                        <p className="mention-context">{m.context_snippet}</p>
+                        <div className="mention-source">
+                          <Book size={12} />
+                          <span>{m.doc_title} (Page {m.page_hint})</span>
+                        </div>
+                      </div>
+                    ))}
+                    {alchemyMentions.length === 0 && <p>No mentions found for this entity.</p>}
+                  </>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--text-secondary)' }}>
+                    Select an entity to view evidence
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </main>
+
+      {showView === 'dh' && (
+        <div className="dh-overlay" style={{ position: 'absolute', top: 0, left: '260px', right: 0, bottom: 0, overflow: 'auto', zIndex: 10 }}>
+          <DigitalHumanities />
+        </div>
+      )}
+
+      {showView === 'gallery' && (
+        <div className="gallery-overlay" style={{ position: 'absolute', top: 0, left: '260px', right: 0, bottom: 0, overflow: 'auto', zIndex: 10 }}>
+          <ImageGallery />
+        </div>
+      )}
+
+      {/* Main Content End */}
 
       {/* Title Details Modal */}
       {selectedTitleId && titleDetail && (
@@ -552,6 +761,18 @@ function App() {
       )}
     </div>
   );
+}
+
+function Mermaid({ chart }: { chart: string }) {
+  useEffect(() => {
+    // @ts-ignore
+    if (window.mermaid) {
+      // @ts-ignore
+      window.mermaid.contentLoaded();
+    }
+  }, [chart]);
+
+  return <div className="mermaid">{chart}</div>;
 }
 
 export default App;
