@@ -1,0 +1,35 @@
+# Plan: Rename PDF Files
+
+The goal is to clean up PDF filenames by removing content within parentheses and specific punctuation marks.
+
+## Proposed Logic
+1.  **Identify files**: Find all [.pdf](file:///e:/pdf/Nikolsky_The_Provenance_of_The_Journey_o.pdf) files in `e:\pdf` (recursively).
+2.  **Parentheses removal**: Remove all occurrences of `(...)` including the parentheses themselves.
+3.  **Punctuation removal**: Remove specified punctuation marks.
+    - *Assumption*: "the punctuation mark" refers to common delimiters like `_`, `-`, `,`, `!`, `?` and brackets `[]` that often clutter academic filenames, or perhaps strictly the parentheses themselves. **I will propose removing common metadata-related punctuation and ask for confirmation.**
+4.  **Whitespace cleanup**: Trim leading/trailing whitespace and normalize internal spaces (replace multiple spaces with a single space).
+5.  **Preserve extension**: Ensure [.pdf](file:///e:/pdf/Nikolsky_The_Provenance_of_The_Journey_o.pdf) is kept.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Please confirm which punctuation marks should be removed. In my proposal, I'm removing `(`, `)`, `[`, `]`, `_`, `,`, and `-` (if redundant).
+>
+> **Proposed transformation example:**
+> `(Princeton Legacy Library_ 555) Jonathan F.S. Post - Henry Vaughan_ The Unfolding Vision-Princeton University Press (2014).pdf`
+> → `Jonathan F.S. Post Henry Vaughan The Unfolding Vision Princeton University Press.pdf`
+
+## Proposed Changes
+
+### [e:\pdf]
+
+I will provide a full printout of all changes for your approval.
+
+## Verification Plan
+
+### Automated Tests
+- I will run a script to simulate the renames and print the output.
+- I will check for filename collisions (if two files would result in the same name).
+
+### Manual Verification
+- You will review the printout of "Before" and "After" names.

@@ -1,0 +1,49 @@
+# Plan: Library Database and Dashboard
+
+Build a system to manage a large PDF collection, supporting categorization by scholar and topic, media association, and AI-driven summarization.
+
+## Proposed Architecture
+
+### 1. Data Layer
+- **Schema**: A SQLite database or a JSON-based store to keep metadata.
+- **Entities**:
+  - `Titles`: Metadata for each PDF (title, path, author, date, etc.).
+  - `Scholars`: Profiles for authors/scholars.
+  - `Topics`: Tags and categories (e.g., Alchemy, Hermeticism).
+  - `Media`: Links to associated files (images, notes, videos) for a title or topic.
+
+### 2. File Scanner
+- A script to recursively scan `e:\pdf`.
+- Extract "Scholar" from the folder name or filename prefix.
+- Assign "Topic" based on the directory path.
+- Store results in the database.
+
+### 3. Web Dashboard (Frontend)
+- **Framework**: Vite + React for a fast, modern UI.
+- **Features**:
+  - Gallery view for browsing by scholar or topic.
+  - Detailed view for each title with ability to link "media".
+  - Search and Filter capabilities.
+  - "Summarize" button (Trigger for AI flow).
+
+### 4. AI Agentic Flows
+- Framework to hook into local LLM or API to read PDF content and generate summaries/metadata.
+- Focus on "Who's Who of Alchemy" graphic novel project.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - Do you have a preference for the database (SQLite is portable and easy, but JSON is ultra-simple)?
+> - Should I assume the folder names in `e:\pdf` are the primary source for "Topics"?
+> - Where would you like the dashboard source code to live?
+
+## Proposed Changes
+
+### [New Project]
+- `scanner.py`: To index the files.
+- `database/`: Database storage.
+- `dashboard/`: React-based web app.
+
+## Verification Plan
+- Automated scan verification (compare DB count to file system).
+- Manual UI testing of filters and sorting.

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+library.db
+
+# Node
+node_modules/
+dist/
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+logs/
+temp/
+dashboard/dist/

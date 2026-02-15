@@ -1,0 +1,63 @@
+# Walkthrough: Library Management System
+
+I have successfully completed the renaming, indexing, and dashboard creation for your PDF collection.
+
+### Esoteric Studies Knowledge System
+
+I have transformed your library into a structured knowledge system by ingesting **249 chat sessions** and analyzing **thousands of questions**.
+
+- **Inquiry Metrics**: The system extracts every question you've asked and categorizes the "investigative move" (e.g., *Table Generation*, *Methodology Analysis*).
+- **Popularity Contest**: A new dashboard view visualizes your research trends—see which scholars (Newton, Pico, Abulafia) dominate your archive and which topics have the highest inquiry density.
+- **Top-Level Organization**:
+    - **Esoteric Studies**: Focus on your primary research area.
+    - **Other Topics**: A dedicated portal for non-esoteric material (Robin Hood, Bataille, Game Design) keeping your workspaces clean.
+    - **Archive**: A full-text searchable vault of your 111+ chat exports with preserved HTML formatting.
+
+- **Unified Production Build**: The entire application is now deployable as a single service. The frontend has been compiled and integrated into the backend, allowing you to run the system with zero development dependencies.
+
+#### How to Explore
+1. **Production Deployment**: Launch the system for day-to-day use with `deploy_production.bat`. This serves the app at `http://localhost:8000`.
+2. **Popularity Dashboard**: Use the "Popularity Contest" tool in the sidebar to view volume counts vs inquiry frequency.
+3. **Question Explorer**: Browse by "Investigative Move" to find every time you've asked for a table or a methodology deep-dive.
+4. **Other Portal**: Switch to the "Other" view to browse secondary research interests.
+
+---
+
+## 1. Filename Sanitization
+- **Total Files Processed**: 1,619
+- **Renames Applied**: 1,489
+- **Logic**: Removed all content within parentheses `(...)` and cleaned up punctuation (commas, hyphens, underscores, etc.) to create uniform, readable filenames.
+- **Collisions Handled**: 16 instances where files would have identical names were handled by adding a suffix (e.g., `_1`).
+
+## 2. Library Database (SQLite)
+- A persistent database `library.db` has been created.
+- **Indexed Titles**: 1,618
+- **Categorization**: 
+  - **Scholars**: Identified key scholars based on folder names (e.g., Cavendish, Margaret Jacob, Shakespeare).
+  - **Topics**: Subdirectories were automatically mapped to topics (e.g., Alchemy, Hermeticism).
+
+## 3. Web Dashboard (Aesthetics & Function)
+A modern, high-performance dashboard built with **React** and **FastAPI**.
+
+### Features:
+- **Sidebar Navigation**: Browse your collection by **Scholar** (e.g., Cavendish, Margaret Jacob) or **Topic** (e.g., Alchemy, Hermeticism).
+- **Real-time Search**: Filter the 1,600+ titles instantly by keyword.
+- **Title Details**: Click any title to see its full path, summary, and linked media.
+- **Media Filing**: Use the "Link New Media" form in the detail view to associate character designs, sketches, or notes (e.g., for your *Who's Who of Alchemy*) with a specific title or scholar.
+- **AI Agent Integration**: I've provided a `summarizer.py` script. When you (or another agent) run it, it reads the next PDF in line, generates a summary, and updates the dashboard automatically.
+
+## 4. How to Launch
+To start the system, run the provided batch script:
+
+1.  Open your terminal or file explorer.
+2.  Run `launch_dashboard.bat`.
+    - This will open a new window for the **Backend (FastAPI)**.
+    - It will then start the **Frontend (Vite)** development server.
+3.  Open the URL provided in the terminal (usually `http://localhost:5173`) to view your dashboard.
+
+## Next Steps: AI Summarization
+The database is pre-configured to handle `summary` and `media` fields. This sets the foundation for your next goal:
+- **Summarization**: AI agents can now be programmed to query the database, read the PDF paths, and write summaries back to the `summary` column.
+- **Graphic Novel Assets**: You can use the `media` table to link specific images or character designs created as part of your "Who's Who of Alchemy" project.
+
+---

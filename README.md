@@ -1,0 +1,80 @@
+# Esoteric Library & Knowledge System
+
+> **Live Dashboard**: [http://localhost:5173](http://localhost:5173) (Local Dev Implementation)
+
+## Vision: The Scholar's Digital Archive
+
+The **Esoteric Library Knowledge System** is designed to transform a static collection of PDF research papers and AI chat logs into a dynamic, relational knowledge base. It bridge the gap between "having a library" and "interacting with a library" by extracting inquiry patterns and connecting modern scholarship with classical texts.
+
+### 🏛️ Dual Portals
+- **Esoteric Studies Portal**: A focused environment for your primary research, including Alchemy, Neoplatonism, and Kabbalah.
+- **Other Topics Portal**: An organized space for secondary interests like Game Design, Digital Humanities, and Literature, ensuring your workspace remains uncluttered.
+
+---
+
+## Key Features
+
+### 🔍 Deep Inquiry Analysis
+Unlike a standard library, this system analyzes **how you think**. 
+- **Investigative Moves**: The system parses 249+ chat sessions to identify your research patterns. It categorizes your questions into moves like *Table Generation*, *Methodology Analysis*, and *Bibliographic Inquiry*.
+- **Question Explorer**: A dedicated interface to browse every question you've ever asked your AI research assistant, linked back to the original source logs.
+
+### 📊 Popularity Contest (Research Metrics)
+A data-driven visualization engine built with **Recharts** that highlights:
+- **Topic Density**: Which categories in your 1,600+ volume library have the most associated inquiry.
+- **Scholar Impact**: A "Popularity Contest" showing which scholars (Newton, Pico della Mirandola, Abulafia) are most frequently cited or discussed in your research notes.
+- **Inquiry Velocity**: Visualization of question density across your entire collection.
+
+### 📁 Smart PDF Ingestion
+- **Automated Sanitization**: 1,489 files processed to remove noise (hashes, IDs) and create human-readable, searchable titles.
+- **Multi-Category Indexing**: Dynamic classification based on folder structure and content analysis.
+- **Media Linking**: Attach specialized images or datasets to specific library volumes for quick access.
+
+### 💬 Knowledge Archive
+- **Beautiful Chat Rendering**: A custom-built viewer that reconstructs your archived ChatGPT exports (index.html), preserving tables, headers, and exegesis in a sleek dark-mode interface.
+
+---
+
+## Technical Architecture
+
+| Component | Technology |
+| :--- | :--- |
+| **Backend** | Python / FastAPI |
+| **Database** | SQLite3 with Relational Schema |
+| **Frontend** | React / TypeScript / Vite |
+| **Styling** | Vanilla CSS (Premium Dark Aesthetics) |
+| **Visuals** | Recharts (D3-based) |
+| **Icons** | Lucide React |
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Python 3.8+
+- Node.js & npm
+
+### Setup
+1. **Clone the project** and navigate to the directory.
+2. **Install Python dependencies**:
+   ```bash
+   pip install fastapi uvicorn beautifulsoup4
+   ```
+3. **Initialize the Frontend**:
+   ```bash
+   cd dashboard
+   npm install
+   ```
+4. **Launch Everything**:
+   For development (hot-reloading):
+   ```bash
+   launch_dashboard.bat
+   ```
+   For production (static-built frontend):
+   ```bash
+   deploy_production.bat
+   ```
+
+---
+
+*“To know is to categorize; to research is to inquire. This system does both.”*

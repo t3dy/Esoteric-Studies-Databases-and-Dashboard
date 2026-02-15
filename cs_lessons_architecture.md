@@ -1,0 +1,37 @@
+# CS Lessons: From Scripter to Architect
+
+This document distills the lessons learned during the development of the **Esoteric Library Knowledge System**. It transitions your perspective from "building a tool that works" to "designing a system that lasts."
+
+## 1. The "Contract" of the Schema
+In the beginning, databases feel like "folders for data." To an architect, a database is a **contract**.
+- **The Lesson**: A loosely defined schema (no foreign keys, ambiguous naming) is a debt that will be collected with interest when you try to scale.
+- **Action**: Always write your `schema.md` before your first query. Define exactly what links to what. If a `chat` links to a `scholar`, what happens if the scholar's name is misspelled? (Use IDs, not names, as links).
+
+## 2. The Power of Reversibility
+Beginners focus on the "Forward Path" (getting the transformation done). Professionals focus on the "Undo Path."
+- **The Lesson**: Data is precious. Any operation that changes a file name, deletes a row, or overwrites a field should be **reversible**. 
+- **Action**: Generate logs. If you rename 1,000 files, your script should create a `rollback.csv`. "Safe engineering" means never being afraid to press the button because you know you can always go back.
+
+## 3. Top-Down Design vs. Bottom-Up Implementation
+You often start with a "Vibe" or a "Philosophy" (Top-Down). You implement by "hacking a feature" (Bottom-Up).
+- **The Lesson**: The bridge between these two is the **Data Lifecycle**.
+- **Action**: Separate your data into stages:
+    1. **Raw**: The messy, original files. (Never touch these).
+    2. **Clean**: Sanitized, normalized text.
+    3. **Enriched**: Data that has been analyzed (e.g., questions extracted).
+    4. **Analytics**: Aggregated stats for the dashboard.
+If you mix these, a bug in the "Clean" stage destroys your "Enriched" data.
+
+## 4. Entity Resolution: The "Newton" Problem
+Is "Isaac Newton" the same as "Sir Isaac Newton" or "Newton, I."?
+- **The Lesson**: Machines are literal. If you want a "Popularity Contest," you need a **Canonical ID**. 
+- **Action**: Create a `entities` table. Every mention of a person maps to a `UUID`. This turns "noise" into "knowledge."
+
+## 5. Software is a Conversation
+Your batch files and launch scripts are the "User Interface" for the next person (or future you). 
+- **The Lesson**: If you have to remember 5 steps to launch, the system is fragile. 
+- **Action**: Automate the environment. One command should build, test, and deploy.
+
+---
+
+*Remember: The question isn’t "Does it run?" The question is "Can I change it tomorrow without breaking it?"*
