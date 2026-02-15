@@ -5,22 +5,22 @@
 | Resource | URL | Version / Role |
 | :--- | :--- | :--- |
 | **GitHub Repository** | **[Esoteric-Studies-Databases-and-Dashboard](https://github.com/t3dy/Esoteric-Studies-Databases-and-Dashboard)** | Source Code & Version Control |
-| **Documentation Hub** | **[http://localhost:5173/docs/index.html](http://localhost:5173/docs/index.html)** | Guides (V1/V2/V3) & Reports Viewer |
-| **V3 Dashboard** | **[http://localhost:5173](http://localhost:5173)** | **Current Production** (Includes V1/V2 Features) |
+| **Documentation Hub** | **[Live Hosted Documentation](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/)** | **Start Here!** Guides & Reports |
 
-## 🖥️ System Versions & Entry Points
-The V3 Dashboard unifies all previous versions. Use these links to access specific historical modes:
+## 🖥️ System Dashboards
+*Note: The **Code** is hosted on GitHub, but the **App** requires the local Python Engine to run.*
 
-| Version | Interface Name | Direct Link | Description |
-| :--- | :--- | :--- | :--- |
-| **V3** | **The Image Vault** | [http://localhost:5173/gallery](http://localhost:5173/gallery) | The "Mutus Liber" Gallery (New!) |
-| **V3** | **Alchemy Portal** | [http://localhost:5173/alchemy](http://localhost:5173/alchemy) | Entity Mining & Knowledge Graph |
-| **V2** | **The Graph** | [http://localhost:5173?view=knowledge](http://localhost:5173?view=knowledge) | Scholar/Concept Analysis (Legacy V2 View) |
-| **V1** | **The Archive** | [http://localhost:5173?view=library](http://localhost:5173?view=library) | PDF Library & Metadata (Legacy V1 View) |
+| Version | Hosted Manual | Local App Link (Running) |
+| :--- | :--- | :--- |
+| **V3 (Vault)** | [Image Vault Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v3_guide.html) | [Launch Gallery](http://localhost:5173/gallery) |
+| **V3 (Portal)** | [Alchemy Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v3_guide.html) | [Launch Portal](http://localhost:5173/alchemy) |
+| **V2 (Graph)** | [Knowledge Graph Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v2_guide.html) | [Launch Graph](http://localhost:5173?view=knowledge) |
+| **V1 (Archive)** | [Legacy Library Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v1_guide.html) | [Launch Library](http://localhost:5173?view=library) |
 
-### 📄 Key Reports & Artifacts
-- **[Analysis Report](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/analysis_report.md)**: System Audit.
-- **[Doctumentation Plan](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/documentation_plan.md)**: Deployment Strategy.
+### 📄 Critiques & Reports
+- **[Prompt Engineering Critique](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/viewer.html?doc=prompt_engineering_critique.md)**: An analysis of your feature engineering methods.
+- **[Analysis Report](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/viewer.html?doc=analysis_report.md)**: System Audit.
+- **[Deployment Plan](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/viewer.html?doc=deployment_plan.md)**: Production Strategy.
 
 # Research Cognition Engine: A Data Engineering Portfolio
 **CS & AI Engineering Showcase**
