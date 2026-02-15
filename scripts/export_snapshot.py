@@ -75,10 +75,6 @@ def export_snapshot():
             json.dump(safe_json(rels), f)
 
         # 5. Documents (Full list usually okay if <10k)
-        docs = conn.execute("SELECT id, title, type, domain, added_at FROM documents").fetchall() # fixed doc_type to type or check schema
-        # Schema says doc_type, let's check schema/migration 001. 
-        # Migration 001 says 'doc_type'.
-        # I'll stick to * for safety or check columns.
         docs = conn.execute("SELECT id, title, doc_type, domain, added_at FROM documents").fetchall()
         with open(os.path.join(EXPORT_DIR, "docs.json"), "w") as f:
             json.dump(safe_json(docs), f)
