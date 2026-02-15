@@ -83,6 +83,13 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // Check for query param 'view'
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get('view');
+    if (view && ['library', 'knowledge', 'questions', 'popularity', 'other', 'all', 'designers', 'alchemy', 'dh', 'gallery'].includes(view)) {
+      setShowView(view as any);
+    }
+
     fetchStats();
     fetchCategories();
     fetchScholars();
