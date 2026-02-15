@@ -5,22 +5,22 @@
 | Resource | URL | Version / Role |
 | :--- | :--- | :--- |
 | **GitHub Repository** | **[Esoteric-Studies-Databases-and-Dashboard](https://github.com/t3dy/Esoteric-Studies-Databases-and-Dashboard)** | Source Code & Version Control |
-| **Documentation Hub** | **[Live Hosted Documentation](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/)** | **Start Here!** Guides & Reports |
+| **Documentation Hub** | **[Live Hosted Documentation](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/index.html)** | **Start Here!** Guides & Reports |
 
 ## 🖥️ System Dashboards
-*Note: The **Code** is hosted on GitHub, but the **App** requires the local Python Engine to run.*
+> **Note:** The **Manuals** below are hosted online. The **"Launch App"** links require you to run the Python Engine locally (`deploy_production.bat`).
 
-| Version | Hosted Manual | Local App Link (Running) |
+| Version | Hosted Manual (Works Online) | Local App Link (Requires Engine) |
 | :--- | :--- | :--- |
-| **V3 (Vault)** | [Image Vault Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v3_guide.html) | [Launch Gallery](http://localhost:5173/gallery) |
-| **V3 (Portal)** | [Alchemy Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v3_guide.html) | [Launch Portal](http://localhost:5173/alchemy) |
-| **V2 (Graph)** | [Knowledge Graph Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v2_guide.html) | [Launch Graph](http://localhost:5173?view=knowledge) |
-| **V1 (Archive)** | [Legacy Library Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/v1_guide.html) | [Launch Library](http://localhost:5173?view=library) |
+| **V3 (Vault)** | [Image Vault Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v3_guide.html) | [Launch Gallery](http://localhost:5173/gallery) |
+| **V3 (Portal)** | [Alchemy Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v3_guide.html) | [Launch Portal](http://localhost:5173/alchemy) |
+| **V2 (Graph)** | [Knowledge Graph Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v2_guide.html) | [Launch Graph](http://localhost:5173?view=knowledge) |
+| **V1 (Archive)** | [Legacy Library Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v1_guide.html) | [Launch Library](http://localhost:5173?view=library) |
 
-### 📄 Critiques & Reports
-- **[Prompt Engineering Critique](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/viewer.html?doc=prompt_engineering_critique.md)**: An analysis of your feature engineering methods.
-- **[Analysis Report](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/viewer.html?doc=analysis_report.md)**: System Audit.
-- **[Deployment Plan](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/viewer.html?doc=deployment_plan.md)**: Production Strategy.
+### 📄 Critiques & Reports (Hosted)
+- **[Prompt Engineering Critique](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=prompt_engineering_critique.md)**: An analysis of your feature engineering methods.
+- **[Analysis Report](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=analysis_report.md)**: System Audit.
+- **[Deployment Plan](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=deployment_plan.md)**: Production Strategy.
 
 # Research Cognition Engine: A Data Engineering Portfolio
 **CS & AI Engineering Showcase**
