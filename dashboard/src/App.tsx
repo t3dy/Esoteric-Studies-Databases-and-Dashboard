@@ -54,19 +54,19 @@ interface AlchemyMention {
 function App() {
   const [showView, setShowView] = useState<'library' | 'knowledge' | 'questions' | 'popularity' | 'other' | 'all' | 'designers' | 'alchemy' | 'dh' | 'gallery'>('library');
   const [stats, setStats] = useState<any>({ titles: 0, categories: 0, media: 0, chats: 0, questions: 0 });
-  const [alchemyStats, setAlchemyStats] = useState<any>(null);
-  const [alchemyEntities, setAlchemyEntities] = useState<AlchemyEntity[]>([]);
-  const [selectedAlchemyEntity, setSelectedAlchemyEntity] = useState<AlchemyEntity | null>(null);
-  const [alchemyMentions, setAlchemyMentions] = useState<AlchemyMention[]>([]);
+  const [alchemyStats] = useState<any>(null);
+  const [alchemyEntities] = useState<AlchemyEntity[]>([]);
+  const [selectedAlchemyEntity] = useState<AlchemyEntity | null>(null);
+  const [alchemyMentions] = useState<AlchemyMention[]>([]);
   const [selectedAlchemyCat, setSelectedAlchemyCat] = useState<string>('ALCHEMISTS');
-  const [miningStatus, setMiningStatus] = useState<string>('');
+  const [miningStatus] = useState<string>('');
   const [newMediaPath, setNewMediaPath] = useState('');
   const [newMediaType, setNewMediaType] = useState('image');
 
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [titles, setTitles] = useState<Title[]>([]);
+  const [categories] = useState<Category[]>([]);
+  const [titles] = useState<Title[]>([]);
   // ... rest of state
-  const [scholars, setScholars] = useState<{ id: string, name: string }[]>([]);
+  const [scholars] = useState<{ id: string, name: string }[]>([]);
   const [chats, setChats] = useState<{ id: number, title: string, date: string, model: string, msg_count: number }[]>([]);
   const [questions, setQuestions] = useState<{ id: number, text: string, move: string, chat_title: string, chat_id: number }[]>([]);
   const [inquiryStats, setInquiryStats] = useState<any>(null);
@@ -76,11 +76,11 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTitleId, setSelectedTitleId] = useState<number | null>(null);
-  const [titleDetail, setTitleDetail] = useState<Title | null>(null);
+  const [titleDetail] = useState<Title | null>(null);
   const [selectedScholar, setSelectedScholar] = useState<string | null>(null);
   const [selectedChat, setSelectedChat] = useState<any | null>(null);
   const [selectedMove, setSelectedMove] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   useEffect(() => {
     // Check for query param 'view'
