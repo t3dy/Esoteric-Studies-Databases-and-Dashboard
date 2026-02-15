@@ -1,26 +1,33 @@
 # 🚀 Research Cognition Engine: V3 Release
-**Status:** Live (Local) | **Version:** 3.0.0 | **Commit:** `HEAD`
+**Status:** Live (GitHub Pages) | **Version:** 3.0.0
 
-## 🔗 Quick Access
-| Resource | URL | Version / Role |
+## 🔗 Quick Access (NEW: Zero-Config)
+These links work immediately in your browser. No installation required.
+
+| Resource | URL | Status |
 | :--- | :--- | :--- |
-| **GitHub Repository** | **[Esoteric-Studies-Databases-and-Dashboard](https://github.com/t3dy/Esoteric-Studies-Databases-and-Dashboard)** | Source Code & Version Control |
-| **Documentation Hub** | **[Live Hosted Documentation](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/index.html)** | **Start Here!** Guides & Reports |
+| **Hosted Dashboard** | **[Live Dashboard](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/)** | ✅ **Active** (Static Snapshot) |
+| **Hosted Manuals** | **[Documentation Hub](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/index.html)** | ✅ **Active** (Guides & Reports) |
+| **GitHub Repository** | **[Source Code](https://github.com/t3dy/Esoteric-Studies-Databases-and-Dashboard)** | ✅ **Active** |
 
-## 🖥️ System Dashboards
-> **Note:** The **Manuals** below are hosted online. The **"Launch App"** links require you to run the Python Engine locally (`deploy_production.bat`).
+## 🔄 How to Update the Data (Local Publisher)
+To update the data shown on the hosted dashboard:
+1. Run `./publish.ps1` in PowerShell.
+2. Wait ~60 seconds for GitHub to deploy.
 
-| Version | Hosted Manual (Works Online) | Local App Link (Requires Engine) |
+## ⚠️ Legacy Local Links (Developer Mode)
+*Note: The following links **DO NOT WORK** unless you are running the local Python engine (`uvicorn`). They are for development only.*
+
+| Legacy Component | Local URL | Status |
 | :--- | :--- | :--- |
-| **V3 (Vault)** | [Image Vault Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v3_guide.html) | [Launch Gallery](http://localhost:5173/gallery) |
-| **V3 (Portal)** | [Alchemy Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v3_guide.html) | [Launch Portal](http://localhost:5173/alchemy) |
-| **V2 (Graph)** | [Knowledge Graph Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v2_guide.html) | [Launch Graph](http://localhost:5173?view=knowledge) |
-| **V1 (Archive)** | [Legacy Library Guide](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/v1_guide.html) | [Launch Library](http://localhost:5173?view=library) |
+| **V3 Image Vault** | `http://localhost:5173/gallery` | ❌ **Offline** (Requires `npm run dev`) |
+| **V3 Alchemy Portal** | `http://localhost:5173/alchemy` | ❌ **Offline** (Requires `npm run dev`) |
+| **V2 Knowledge Graph** | `http://localhost:5173?view=knowledge` | ❌ **Offline** (Requires `npm run dev`) |
+| **V1 Archive** | `http://localhost:5173?view=library` | ❌ **Offline** (Requires `npm run dev`) |
 
-### 📄 Critiques & Reports (Hosted)
-- **[Prompt Engineering Critique](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=prompt_engineering_critique.md)**: An analysis of your feature engineering methods.
-- **[Analysis Report](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=analysis_report.md)**: System Audit.
-- **[Deployment Plan](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=deployment_plan.md)**: Production Strategy.
+### 📄 Critiques & Reports
+- **[Prompt Engineering Critique](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=prompt_engineering_critique.md)**
+- **[Analysis Report](https://t3dy.github.io/Esoteric-Studies-Databases-and-Dashboard/docs/viewer.html?doc=analysis_report.md)**
 
 # Research Cognition Engine: A Data Engineering Portfolio
 **CS & AI Engineering Showcase**
@@ -32,7 +39,7 @@ Unlike basic storage systems, this engine employs a **Cascading Update** archite
 
 ### 🛠️ Data Engineering Concepts Applied
 - **Deterministic Ingestion**: Using hash-based identity to ensure 100% data integrity during migration and renaming.
-- **Relational Integrity (Schema Sentinel)**: A custom migration engine ([migrate.py](file:///C:/Users/PC/.gemini/antigravity/brain/36954c62-9d67-4848-94a4-278b6cac4051/migrate.py)) manages the evolution of the SQLite schema, enforcing strict foreign key constraints.
+- **Relational Integrity (Schema Sentinel)**: A custom migration engine ([migrate.py](https://github.com/t3dy/Esoteric-Studies-Databases-and-Dashboard/blob/main/backend/app_v3/migrate.py)) manages the evolution of the SQLite schema, enforcing strict foreign key constraints.
 - **Micro-Chunking & Anchoring**: Documents are discretized into semantic chunks, anchored to character offsets for sub-page provenance tracking.
 
 ### 🧠 AI & Knowledge Sovereignty
@@ -40,13 +47,8 @@ Unlike basic storage systems, this engine employs a **Cascading Update** archite
 - **Ontology Discipline (Relationship Weaver)**: The move from a "bucket of tags" to a "Knowledge Graph" using controlled predicates like `influenced_by` and `analog_of`.
 - **FTS5 Search**: High-performance Full-Text Search integration for millisecond retrieval across hundreds of thousands of textual tokens.
 
-## 🌐 Dashboard Portals
-The application is deployed as a dual-interface research platform:
-- **[Library Dashboard](http://localhost:5173)**: Focused on corpus management, file metadata, and question extraction.
-- **[Alchemy Portal](http://localhost:5173#alchemy)**: A specialized hermetic blueprint interface for deep data mining, experiment extraction, and poetry analysis.
-
 ## 📈 System Maturity (V3 Hardening)
-- **Reactive Event Bus**: Real-time dashboard updates via WebSockets.
+- **Local-First Architecture**: V3 operates on a "Publish-to-Static" model, ensuring dashboards are always available without fragile backend dependencies.
 - **CI/CD Pipeline**: Automated smoke tests and benchmarking for search latency.
 - **Audit Stability**: 100% reversible operations via the Audit & Rollback module.
 
